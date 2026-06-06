@@ -1,0 +1,2041 @@
+/* ============================================================
+   LILIES FOR LEY — Stylesheet Utama
+   Website ulang tahun romantis bertema bunga lily pink.
+   Dibuat dengan cinta, untuk seseorang yang istimewa. 🌸
+   ============================================================ */
+
+/* --- Google Fonts Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,700&family=Lato:wght@300;400;700&display=swap');
+
+/* ============================================================
+   DESIGN TOKENS — Variabel Warna & Tema
+   ============================================================ */
+:root {
+  --pink-light: #FFB6C1;
+  --pink-hot: #FF69B4;
+  --pink-pastel: #FFC0CB;
+  --pink-deep: #FF1493;
+  --pink-rose: #E91E8C;
+  --white: #FFFFFF;
+  --gold: #FFD700;
+  --gold-light: #FFE55C;
+  --parchment: #FFF0F5;
+  --dark: #1a0a10;
+  --dark-overlay: rgba(26, 10, 16, 0.85);
+  --shadow-pink: rgba(255, 105, 180, 0.3);
+  --shadow-gold: rgba(255, 215, 0, 0.3);
+}
+
+/* ============================================================
+   RESET & BASE — Fondasi global
+   ============================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--white);
+  background-color: var(--dark);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --- Seleksi teks berwarna pink --- */
+::selection {
+  background: var(--pink-hot);
+  color: var(--white);
+}
+
+::-moz-selection {
+  background: var(--pink-hot);
+  color: var(--white);
+}
+
+/* --- Custom Scrollbar — nuansa pink elegan --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--pink-hot), var(--pink-deep));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--pink-deep), var(--pink-rose));
+}
+
+/* Scrollbar untuk Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--pink-hot) var(--dark);
+}
+
+/* ============================================================
+   SECTION BASE — Setiap section full-width, minimal 100vh
+   ============================================================ */
+section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  overflow: hidden;
+}
+
+/* ============================================================
+   1. HERO SECTION — Kesan pertama yang memukau
+   ============================================================ */
+#hero-section {
+  background: radial-gradient(ellipse at 50% 30%, var(--pink-deep), #3d0620 50%, var(--dark) 100%);
+  text-align: center;
+  padding: 0 1.5rem;
+  z-index: 1;
+}
+
+/* Judul utama — besar, megah, bersinar */
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: var(--white);
+  text-shadow:
+    0 0 20px rgba(255, 105, 180, 0.6),
+    0 0 40px rgba(255, 105, 180, 0.4),
+    0 0 80px rgba(255, 105, 180, 0.2);
+  letter-spacing: 2px;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Konten hero — container terpusat */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  position: relative;
+}
+
+/* Tagline hero — petunjuk scroll */
+.hero-tagline {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  color: rgba(255, 192, 203, 0.6);
+  letter-spacing: 2px;
+  margin-top: 1rem;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Subtitle — ringan dan lembut */
+.hero-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: var(--pink-pastel);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Container kelopak bunga jatuh --- */
+.petals-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Kelopak individu — bentuk organik alami */
+.petal {
+  position: absolute;
+  width: 25px;
+  height: 30px;
+  background: radial-gradient(ellipse at 30% 30%, var(--pink-pastel), var(--pink-hot) 60%, transparent 100%);
+  border-radius: 60% 40% 70% 30% / 50% 60% 30% 70%;
+  opacity: 0.7;
+  animation:
+    petalFall linear infinite,
+    petalSway ease-in-out infinite;
+  will-change: transform, margin-left, opacity;
+}
+
+/* Variasi ukuran kelopak agar terlihat natural */
+.petal:nth-child(odd) {
+  width: 20px;
+  height: 25px;
+}
+
+.petal:nth-child(3n) {
+  width: 35px;
+  height: 30px;
+  border-radius: 40% 60% 30% 70% / 60% 50% 70% 30%;
+}
+
+.petal:nth-child(5n) {
+  width: 22px;
+  height: 28px;
+  background: radial-gradient(ellipse at 40% 20%, #ffe0ec, var(--pink-light) 60%, transparent 100%);
+}
+
+/* --- Tombol musik — glass morphism --- */
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.music-btn:hover {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 20px var(--shadow-pink),
+    0 0 40px rgba(255, 105, 180, 0.15);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.music-btn:active {
+  transform: scale(1.05);
+}
+
+/* --- CTA scroll ke bawah --- */
+.scroll-cta {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  animation: bounce 2s ease-in-out infinite;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-cta:hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   2. GALLERY SECTION — Galeri foto kenangan
+   ============================================================ */
+#gallery-section {
+  background: linear-gradient(180deg, var(--dark) 0%, #2a0a1a 50%, #1f0515 100%);
+  padding: 5rem 1.5rem;
+}
+
+/* Judul section — dengan garis dekoratif di kiri-kanan */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.section-title::before,
+.section-title::after {
+  content: '';
+  display: block;
+  width: clamp(30px, 10vw, 80px);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--pink-hot), transparent);
+  flex-shrink: 0;
+}
+
+/* Grid galeri — 2 kolom di desktop */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Item galeri — kartu foto dengan efek hover */
+.gallery-item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px var(--shadow-pink),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-item img,
+.gallery-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover {
+  box-shadow:
+    0 12px 48px rgba(255, 105, 180, 0.5),
+    0 4px 20px var(--shadow-gold),
+    0 0 0 2px rgba(255, 105, 180, 0.2);
+  transform: translateY(-4px);
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+  transform: scale(1.08);
+}
+
+/* Badge video di galeri */
+.video-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 105, 180, 0.85);
+  backdrop-filter: blur(4px);
+  color: var(--white);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  padding-left: 2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .video-badge {
+  background: var(--pink-hot);
+  transform: scale(1.1);
+}
+
+/* Caption foto — slide up dari bawah saat hover */
+.gallery-item .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.2rem 1rem;
+  background: linear-gradient(0deg, rgba(26, 10, 16, 0.9) 0%, rgba(26, 10, 16, 0.4) 70%, transparent 100%);
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover .caption {
+  transform: translateY(0);
+}
+
+/* Placeholder jika tidak ada foto */
+.gallery-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 105, 180, 0.15), rgba(255, 20, 147, 0.1));
+  border: 2px dashed rgba(255, 105, 180, 0.25);
+  border-radius: 16px;
+  aspect-ratio: 4 / 3;
+  color: var(--pink-pastel);
+  font-size: 3rem;
+  gap: 0.8rem;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.gallery-placeholder span {
+  font-size: 0.9rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.gallery-placeholder:hover {
+  border-color: rgba(255, 105, 180, 0.45);
+  background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(255, 20, 147, 0.15));
+}
+
+/* ============================================================
+   3. LIGHTBOX — Tampilan foto layar penuh
+   ============================================================ */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  background: var(--dark-overlay);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.lightbox.active {
+  display: flex;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-img,
+.lightbox-video {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow:
+    0 20px 60px rgba(255, 105, 180, 0.3),
+    0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-video {
+  background: #000;
+  outline: none;
+}
+
+.lightbox-caption {
+  text-align: center;
+  color: var(--white);
+  margin-top: 1rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+/* Tombol tutup lightbox */
+.lightbox-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  font-size: 2.5rem;
+  color: var(--white);
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 10;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close:hover {
+  transform: rotate(90deg) scale(1.15);
+  color: var(--pink-hot);
+}
+
+/* Tombol navigasi prev/next */
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: var(--white);
+  background: rgba(26, 10, 16, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  line-height: 1;
+  backdrop-filter: blur(4px);
+}
+
+.lightbox-prev {
+  left: -70px;
+}
+
+.lightbox-next {
+  right: -70px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 105, 180, 0.4);
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* ============================================================
+   4. MAKE A WISH SECTION — Kirim harapan
+   ============================================================ */
+#wish-section {
+  background: radial-gradient(ellipse at 50% 60%, #3d0620, var(--dark) 80%);
+  padding: 5rem 1.5rem;
+}
+
+.wish-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Textarea — elegan dengan efek glow saat fokus */
+.wish-textarea {
+  min-height: 150px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 105, 180, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  resize: vertical;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  outline: none;
+}
+
+.wish-textarea:focus {
+  border-color: var(--pink-hot);
+  box-shadow:
+    0 0 20px rgba(255, 105, 180, 0.25),
+    0 0 40px rgba(255, 105, 180, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.wish-textarea::placeholder {
+  color: rgba(255, 192, 203, 0.5);
+  font-style: italic;
+}
+
+/* Tombol kirim — gradient pink premium */
+.wish-submit {
+  padding: 1rem 3rem;
+  background: linear-gradient(135deg, var(--pink-hot), var(--pink-deep));
+  border: none;
+  border-radius: 50px;
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  align-self: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.wish-submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.wish-submit:hover::before {
+  left: 100%;
+}
+
+.wish-submit:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 30px rgba(255, 105, 180, 0.4),
+    0 4px 15px rgba(255, 20, 147, 0.3);
+}
+
+.wish-submit:active {
+  transform: scale(0.97) translateY(-1px);
+}
+
+.wish-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.wish-submit:disabled::before {
+  display: none;
+}
+
+/* Pesan error */
+.wish-error {
+  color: var(--pink-pastel);
+  text-align: center;
+  font-size: 0.95rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+/* Overlay sukses kirim wish — layar penuh */
+.wish-success-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3000;
+  background: rgba(26, 10, 16, 0.92);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.wish-success-overlay.active {
+  display: flex;
+}
+
+/* Teks sukses — megah dengan cahaya gold */
+.wish-success-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  color: var(--white);
+  text-align: center;
+  text-shadow:
+    0 0 30px var(--shadow-gold),
+    0 0 60px rgba(255, 215, 0, 0.2);
+  animation: fadeInUp 0.8s ease forwards;
+  line-height: 1.3;
+}
+
+/* Bunga mekar — efek bloom di overlay sukses */
+.bloom-flower {
+  position: absolute;
+  animation: bloom 2s ease-out forwards;
+  pointer-events: none;
+  font-size: 2rem;
+  will-change: transform, opacity;
+}
+
+.bloom-flower:nth-child(2) {
+  font-size: 1.5rem;
+  animation-delay: 0.2s;
+  animation-duration: 2.5s;
+}
+
+.bloom-flower:nth-child(3) {
+  font-size: 2.5rem;
+  animation-delay: 0.4s;
+  animation-duration: 1.8s;
+}
+
+.bloom-flower:nth-child(4) {
+  font-size: 1.8rem;
+  animation-delay: 0.6s;
+  animation-duration: 2.2s;
+}
+
+.bloom-flower:nth-child(5) {
+  font-size: 3rem;
+  animation-delay: 0.3s;
+  animation-duration: 2.8s;
+}
+
+/* ============================================================
+   5. BLOW THE CANDLE SECTION — Tiup lilin ulang tahun
+   ============================================================ */
+#candle-section {
+  background: radial-gradient(ellipse at 50% 70%, #2a0a1a, var(--dark) 85%);
+  padding: 5rem 1.5rem;
+  justify-content: center;
+}
+
+/* Container kue */
+.cake-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Kue — struktur berlapis */
+.cake {
+  position: relative;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Layer kue — bawah paling besar, atas paling kecil */
+.cake-layer {
+  position: relative;
+}
+
+.cake-layer-1 {
+  width: 280px;
+  height: 80px;
+  background: linear-gradient(180deg, var(--pink-hot) 0%, var(--pink-deep) 100%);
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 8px 25px rgba(255, 20, 147, 0.3);
+}
+
+/* Efek frosting — pola gelombang di atas setiap layer */
+.cake-layer-1::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -5px;
+  right: -5px;
+  height: 20px;
+  background:
+    radial-gradient(ellipse 25px 12px at 25px 10px, rgba(255, 255, 255, 0.85) 50%, transparent 52%),
+    radial-gradient(ellipse 25px 12px at 75px 10px, rgba(255, 255, 255, 0.85) 50%, transparent 52%),
+    radial-gradient(ellipse 25px 12px at 125px 10px, rgba(255, 255, 255, 0.85) 50%, transparent 52%),
+    radial-gradient(ellipse 25px 12px at 175px 10px, rgba(255, 255, 255, 0.85) 50%, transparent 52%),
+    radial-gradient(ellipse 25px 12px at 225px 10px, rgba(255, 255, 255, 0.85) 50%, transparent 52%),
+    radial-gradient(ellipse 25px 12px at 275px 10px, rgba(255, 255, 255, 0.85) 50%, transparent 52%);
+  background-repeat: no-repeat;
+}
+
+.cake-layer-2 {
+  width: 230px;
+  height: 65px;
+  background: linear-gradient(180deg, var(--pink-pastel) 0%, var(--pink-hot) 100%);
+  border-radius: 20px 20px 0 0;
+  margin: 0 auto -5px;
+  z-index: 1;
+}
+
+.cake-layer-2::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -3px;
+  right: -3px;
+  height: 18px;
+  background:
+    radial-gradient(ellipse 22px 10px at 22px 9px, rgba(255, 255, 255, 0.8) 50%, transparent 52%),
+    radial-gradient(ellipse 22px 10px at 66px 9px, rgba(255, 255, 255, 0.8) 50%, transparent 52%),
+    radial-gradient(ellipse 22px 10px at 110px 9px, rgba(255, 255, 255, 0.8) 50%, transparent 52%),
+    radial-gradient(ellipse 22px 10px at 154px 9px, rgba(255, 255, 255, 0.8) 50%, transparent 52%),
+    radial-gradient(ellipse 22px 10px at 198px 9px, rgba(255, 255, 255, 0.8) 50%, transparent 52%);
+  background-repeat: no-repeat;
+}
+
+.cake-layer-3 {
+  width: 180px;
+  height: 55px;
+  background: linear-gradient(180deg, var(--pink-light) 0%, var(--pink-pastel) 100%);
+  border-radius: 20px 20px 0 0;
+  margin: 0 auto -5px;
+  z-index: 2;
+}
+
+.cake-layer-3::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: -3px;
+  right: -3px;
+  height: 16px;
+  background:
+    radial-gradient(ellipse 20px 9px at 20px 8px, rgba(255, 255, 255, 0.75) 50%, transparent 52%),
+    radial-gradient(ellipse 20px 9px at 60px 8px, rgba(255, 255, 255, 0.75) 50%, transparent 52%),
+    radial-gradient(ellipse 20px 9px at 100px 8px, rgba(255, 255, 255, 0.75) 50%, transparent 52%),
+    radial-gradient(ellipse 20px 9px at 140px 8px, rgba(255, 255, 255, 0.75) 50%, transparent 52%);
+  background-repeat: no-repeat;
+}
+
+/* Piring kue — elips emas */
+.cake-plate {
+  width: 320px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--gold), #c5a000, var(--gold-light));
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow:
+    0 4px 15px var(--shadow-gold),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Container lilin — di atas kue */
+.candles-container {
+  position: absolute;
+  top: -80px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  z-index: 5;
+}
+
+/* Lilin individu */
+.candle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Badan lilin — gradasi gold dengan garis dekoratif */
+.candle-body {
+  width: 28px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+  border-radius: 4px 4px 2px 2px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+}
+
+/* Garis dekoratif pada lilin */
+.candle-body::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: calc(100% - 16px);
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0px,
+    transparent 6px,
+    rgba(255, 255, 255, 0.3) 6px,
+    rgba(255, 255, 255, 0.3) 8px
+  );
+  border-radius: 2px;
+}
+
+/* Angka di tengah lilin */
+.candle-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--dark);
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Container api — di atas badan lilin */
+.flame-container {
+  position: relative;
+  width: 20px;
+  height: 35px;
+  margin-bottom: -2px;
+}
+
+/* Api utama — berkedip realistis */
+.flame {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 28px;
+  background: radial-gradient(ellipse at 50% 90%, #ffeb3b 0%, #ff9800 40%, rgba(255, 87, 34, 0.6) 70%, transparent 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flicker 0.3s infinite alternate;
+  will-change: transform, opacity;
+}
+
+/* Api bagian dalam — lebih terang */
+.flame-inner {
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  background: linear-gradient(180deg, var(--white) 0%, #fff9c4 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flicker 0.3s infinite alternate;
+  animation-delay: 0.1s;
+}
+
+/* Cahaya api — glow effect */
+.flame-glow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(255, 235, 59, 0.35) 0%, rgba(255, 152, 0, 0.15) 40%, transparent 70%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(8px);
+  animation: glowPulse 1.5s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* Saat lilin ditiup — api padam */
+.candle-section.blown .flame,
+.candle-section.blown .flame-inner,
+.candle-section.blown .flame-glow {
+  animation: extinguish 0.6s ease-out forwards;
+}
+
+/* Asap setelah lilin padam */
+.smoke {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(180, 180, 180, 0.4);
+  border-radius: 50%;
+  opacity: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  will-change: transform, opacity;
+}
+
+.candle-section.blown .smoke {
+  animation: smokeRise 1.5s ease-out forwards;
+}
+
+.candle-section.blown .smoke:nth-child(2) {
+  animation-delay: 0.15s;
+  left: calc(50% - 4px);
+}
+
+.candle-section.blown .smoke:nth-child(3) {
+  animation-delay: 0.3s;
+  left: calc(50% + 4px);
+}
+
+/* Instruksi tiup lilin — animasi pulse */
+.candle-instruction {
+  margin-top: 2rem;
+  color: var(--pink-pastel);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-align: center;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* Teks reveal "Lilies" — tampil setelah lilin ditiup */
+.lilies-reveal {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-align: center;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.lilies-bouquet-img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  filter: drop-shadow(0 15px 35px rgba(255, 105, 180, 0.4));
+  animation: floatBouquet 4s ease-in-out infinite;
+}
+
+@keyframes floatBouquet {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.lilies-reveal.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Partikel lily — melayang ke atas */
+.lilies-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  animation: lilyFloat 3s ease-out forwards;
+  will-change: transform, opacity;
+  font-size: 2rem;
+}
+
+/* ============================================================
+   6. LOVE LETTER SECTION — Surat cinta
+   ============================================================ */
+#letter-section {
+  background: linear-gradient(180deg, var(--dark) 0%, #2a0a1a 40%, #1f0515 100%);
+  padding: 5rem 1.5rem;
+}
+
+/* Container amplop — perspektif 3D */
+.envelope-container {
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Amplop — interaktif, bisa dibuka */
+.envelope {
+  position: relative;
+  width: clamp(280px, 80vw, 420px);
+  aspect-ratio: 1.4 / 1;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+  transform: translateY(-5px);
+}
+
+/* Badan amplop */
+.envelope-body {
+  position: absolute;
+  width: 100%;
+  height: 70%;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--pink-hot), var(--pink-deep));
+  border-radius: 0 0 12px 12px;
+  box-shadow:
+    0 10px 40px rgba(255, 20, 147, 0.3),
+    0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+/* Tutup amplop — bisa terbuka dengan animasi 3D */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background: var(--pink-deep);
+  clip-path: polygon(0 0, 50% 70%, 100% 0);
+  transform-origin: top center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.envelope.opened .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+/* Bagian belakang amplop */
+.envelope-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background: linear-gradient(180deg, #c4106e, var(--pink-deep));
+  clip-path: polygon(0 0, 50% 70%, 100% 0);
+  z-index: 0;
+}
+
+/* Dekorasi lily kecil di sudut amplop */
+.envelope-lily {
+  position: absolute;
+  z-index: 3;
+  opacity: 0.8;
+  font-size: 1.4rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.envelope-lily:nth-child(1) {
+  bottom: 10px;
+  right: 12px;
+}
+
+.envelope-lily:nth-child(2) {
+  bottom: 10px;
+  left: 12px;
+  transform: scaleX(-1);
+}
+
+/* Instruksi buka amplop */
+.envelope-instruction {
+  margin-top: 1.5rem;
+  color: var(--pink-pastel);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  animation: pulse 2.5s ease-in-out infinite;
+  text-align: center;
+}
+
+/* Surat di dalam amplop — muncul naik saat dibuka */
+.letter {
+  position: absolute;
+  width: 85%;
+  height: 80%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  bottom: 15%;
+  background: var(--parchment);
+  border-radius: 8px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    inset 0 0 30px rgba(255, 182, 193, 0.1);
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s,
+              opacity 0.6s ease 0.4s;
+  opacity: 0;
+  z-index: 1;
+  overflow-y: auto;
+}
+
+.envelope.opened .letter {
+  transform: translateX(-50%) translateY(-120%);
+  opacity: 1;
+}
+
+/* Konten surat — tipografi elegan */
+.letter-content {
+  padding: 2rem;
+  font-family: 'Playfair Display', serif;
+  color: var(--dark);
+  line-height: 1.8;
+  font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+  font-weight: 400;
+}
+
+/* Dekorasi bunga di 4 sudut surat */
+.letter-floral-corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.letter-floral-corner::before {
+  content: '✿';
+  font-size: 1.2rem;
+  color: var(--pink-hot);
+}
+
+.letter-floral-corner:nth-child(1) {
+  top: 8px;
+  left: 8px;
+}
+
+.letter-floral-corner:nth-child(2) {
+  top: 8px;
+  right: 8px;
+  transform: scaleX(-1);
+}
+
+.letter-floral-corner:nth-child(3) {
+  bottom: 8px;
+  left: 8px;
+  transform: scaleY(-1);
+}
+
+.letter-floral-corner:nth-child(4) {
+  bottom: 8px;
+  right: 8px;
+  transform: scale(-1);
+}
+
+/* Tanda tangan surat */
+.letter-signature {
+  margin-top: 1.5rem;
+  text-align: right;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--pink-deep);
+  opacity: 0;
+  transition: opacity 0.5s ease 1.5s;
+}
+
+.letter-signature.visible,
+.envelope.opened .letter-signature {
+  opacity: 1;
+}
+
+/* Overlay surat — layar penuh untuk baca surat */
+.letter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1500;
+  background: var(--dark-overlay);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.letter-overlay.active {
+  display: flex;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* ============================================================
+   7. FOOTER — Penutup dengan cinta
+   ============================================================ */
+#footer {
+  background: var(--dark);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+#footer p {
+  color: var(--pink-pastel);
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+/* Ikon hati berdenyut */
+#footer .heart-icon,
+.footer-heart {
+  display: inline-block;
+  color: var(--pink-hot);
+  animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   ANIMASI KEYFRAMES — Keajaiban bergerak
+   ============================================================ */
+
+/* Kelopak jatuh dari atas ke bawah */
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Kelopak berayun ke kiri-kanan */
+@keyframes petalSway {
+  0%, 100% {
+    margin-left: 0;
+  }
+  25% {
+    margin-left: 50px;
+  }
+  75% {
+    margin-left: -50px;
+  }
+}
+
+/* Api berkedip */
+@keyframes flicker {
+  0%, 100% {
+    transform: translateX(-50%) scale(1) rotate(-1deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(-50%) scale(1.05, 0.95) rotate(1deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(-50%) scale(0.95, 1.05) rotate(-2deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateX(-50%) scale(1.02, 0.98) rotate(1.5deg);
+    opacity: 0.85;
+  }
+}
+
+/* Cahaya api berdenyut */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* Api padam */
+@keyframes extinguish {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(1.3, 0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+}
+
+/* Asap naik */
+@keyframes smokeRise {
+  0% {
+    opacity: 0.6;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(3);
+  }
+}
+
+/* Bunga mekar */
+@keyframes bloom {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Muncul dari bawah */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Muncul halus */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Pantulan */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-12px);
+  }
+}
+
+/* Denyut halus */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Goyangan lembut */
+@keyframes wobble {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+/* Lily melayang naik */
+@keyframes lilyFloat {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Kursor ketik */
+@keyframes typewriterCursor {
+  0%, 100% {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: var(--pink-deep);
+  }
+}
+
+/* Detak jantung */
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.3);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.15);
+  }
+}
+
+/* Kilauan */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES — Kelas bantu serbaguna
+   ============================================================ */
+
+/* Animasi fade-in saat scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Sembunyikan elemen */
+.hidden {
+  display: none !important;
+}
+
+/* Teks gradasi pink */
+.text-gradient-pink {
+  background: linear-gradient(135deg, var(--pink-light), var(--pink-hot), var(--pink-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Teks gradasi gold */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================================
+   KOMPONEN TAMBAHAN — Styling yang dibutuhkan HTML
+   ============================================================ */
+
+/* Container umum per section */
+.section-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Subtitle section — deskripsi di bawah judul */
+.section-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+  color: rgba(255, 192, 203, 0.7);
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+/* Scene kue — wrapper interaktif */
+.cake-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 3rem 1rem;
+  transition: transform 0.2s ease;
+}
+
+.cake-scene:hover {
+  transform: scale(1.02);
+}
+
+/* Emoji hati di amplop */
+.envelope-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  z-index: 2;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Tombol continue di overlay sukses wish */
+.wish-success-close {
+  margin-top: 2rem;
+  padding: 0.8rem 2.5rem;
+  background: linear-gradient(135deg, var(--pink-hot), var(--pink-deep));
+  border: none;
+  border-radius: 50px;
+  color: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  z-index: 10;
+  animation: fadeInUp 1.2s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.wish-success-close:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
+}
+
+/* Overlay surat — konten terpusat */
+.letter-overlay-content {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Kertas surat di overlay */
+.letter-paper {
+  position: relative;
+  background: var(--parchment);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(255, 182, 193, 0.15),
+    inset 0 0 30px rgba(255, 182, 193, 0.08);
+  min-height: 300px;
+}
+
+/* Tombol tutup overlay surat */
+.letter-overlay-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--pink-hot), var(--pink-deep));
+  border: none;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+  line-height: 1;
+}
+
+.letter-overlay-close:hover {
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 20, 147, 0.5);
+}
+
+/* Teks surat di overlay */
+.letter-overlay-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  color: var(--dark);
+  line-height: 1.9;
+  font-weight: 400;
+  min-height: 100px;
+}
+
+/* Tanda tangan di overlay surat */
+.letter-overlay-signature {
+  margin-top: 2rem;
+  text-align: right;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--pink-deep);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* Sub-teks di bawah "Lilies for Ley" */
+.lilies-subtext {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: var(--pink-pastel);
+  text-align: center;
+  margin-top: 1rem;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 1s ease 0.5s;
+}
+
+.lilies-reveal.visible .lilies-subtext {
+  opacity: 1;
+}
+
+/* Teks "Lilies for Ley" — pastikan gradient text bekerja */
+.lilies-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 7vw, 5rem);
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--white), var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px var(--shadow-gold));
+}
+
+/* Tombol musik saat sedang playing */
+.music-btn.playing {
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow:
+    0 0 15px var(--shadow-pink),
+    0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Arrow di CTA scroll */
+.scroll-cta span {
+  font-size: 2rem;
+  display: block;
+}
+
+/* Footer year */
+.footer-year {
+  font-size: 0.8rem !important;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   RESPONSIVE — Adaptif untuk semua layar
+   ============================================================ */
+
+/* Tablet ke atas */
+@media (min-width: 768px) {
+  /* Galeri 2 kolom */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  /* Section padding lebih luas */
+  section {
+    padding: 6rem 3rem;
+  }
+
+  /* Judul section lebih besar */
+  .section-title {
+    margin-bottom: 3.5rem;
+  }
+
+  /* Form wish lebih luas */
+  .wish-textarea {
+    min-height: 180px;
+  }
+
+  /* Lightbox navigasi lebih jauh dari tepi */
+  .lightbox-prev {
+    left: -80px;
+  }
+
+  .lightbox-next {
+    right: -80px;
+  }
+
+  /* Footer padding */
+  #footer {
+    padding: 4rem 3rem;
+  }
+
+  /* Kue lebih besar */
+  .cake {
+    width: 300px;
+  }
+
+  .cake-layer-1 {
+    width: 300px;
+    height: 85px;
+  }
+
+  .cake-layer-2 {
+    width: 245px;
+    height: 70px;
+  }
+
+  .cake-layer-3 {
+    width: 190px;
+    height: 58px;
+  }
+
+  .cake-plate {
+    width: 340px;
+    height: 22px;
+  }
+
+  /* Letter overlay padding lebih luas */
+  .letter-content {
+    padding: 2.5rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  /* Container max-width agar konten tidak terlalu lebar */
+  .gallery-grid {
+    max-width: 950px;
+  }
+
+  .wish-form {
+    max-width: 650px;
+  }
+
+  /* Section padding maksimal */
+  section {
+    padding: 7rem 4rem;
+  }
+
+  /* Tombol musik lebih besar */
+  .music-btn {
+    width: 54px;
+    height: 54px;
+    font-size: 1.4rem;
+    top: 28px;
+    right: 28px;
+  }
+
+  /* Lightbox navigasi di layar besar */
+  .lightbox-prev {
+    left: -90px;
+  }
+
+  .lightbox-next {
+    right: -90px;
+  }
+
+  /* Kue lebih megah di desktop */
+  .cake {
+    width: 320px;
+  }
+
+  .cake-layer-1 {
+    width: 320px;
+    height: 90px;
+  }
+
+  .cake-layer-2 {
+    width: 260px;
+    height: 75px;
+  }
+
+  .cake-layer-3 {
+    width: 200px;
+    height: 60px;
+  }
+
+  .cake-plate {
+    width: 360px;
+    height: 24px;
+  }
+
+  .candles-container {
+    top: -90px;
+    gap: 20px;
+  }
+
+  .candle-body {
+    width: 32px;
+    height: 78px;
+  }
+
+  /* Surat lebih besar */
+  .letter-content {
+    padding: 3rem;
+    line-height: 1.9;
+  }
+}
+
+/* Layar kecil / mobile */
+@media (max-width: 480px) {
+  /* Galeri gap lebih kecil */
+  .gallery-grid {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .gallery-item {
+    border-radius: 12px;
+  }
+
+  /* Section padding lebih hemat */
+  section {
+    padding: 3rem 1rem;
+  }
+
+  /* Tombol musik lebih kecil */
+  .music-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+    top: 12px;
+    right: 12px;
+  }
+
+  /* Lightbox navigasi di dalam gambar untuk mobile */
+  .lightbox-prev,
+  .lightbox-next {
+    width: 44px;
+    height: 44px;
+    font-size: 2rem;
+  }
+
+  .lightbox-prev {
+    left: 5px;
+  }
+
+  .lightbox-next {
+    right: 5px;
+  }
+
+  .lightbox-close {
+    top: -10px;
+    right: -5px;
+    font-size: 2rem;
+  }
+
+  /* Amplop lebih kecil */
+  .envelope {
+    width: clamp(260px, 85vw, 360px);
+  }
+
+  /* Kue lebih kecil */
+  .cake {
+    width: 240px;
+  }
+
+  .cake-layer-1 {
+    width: 240px;
+    height: 70px;
+  }
+
+  .cake-layer-2 {
+    width: 195px;
+    height: 58px;
+  }
+
+  .cake-layer-3 {
+    width: 150px;
+    height: 48px;
+  }
+
+  .cake-plate {
+    width: 275px;
+    height: 18px;
+  }
+
+  .candles-container {
+    top: -70px;
+    gap: 10px;
+  }
+
+  .candle-body {
+    width: 24px;
+    height: 60px;
+  }
+
+  .candle-number {
+    font-size: 1.1rem;
+  }
+
+  /* Surat padding lebih kecil */
+  .letter-content {
+    padding: 1.5rem;
+  }
+
+  /* Wish form */
+  .wish-textarea {
+    padding: 1.2rem;
+    font-size: 1rem;
+    min-height: 130px;
+  }
+
+  .wish-submit {
+    padding: 0.9rem 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION — Hormati preferensi pengguna
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .petal {
+    display: none;
+  }
+}

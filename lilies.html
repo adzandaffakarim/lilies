@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <!-- Pengaturan karakter dan viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Judul dan deskripsi halaman -->
+  <title>🌸 Happy Birthday, Leyka</title>
+  <meta name="description" content="A special birthday surprise for someone special">
+
+  <!-- Favicon menggunakan emoji lily sebagai inline SVG data URI -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌸</text></svg>" type="image/svg+xml">
+
+  <!-- Google Fonts: Playfair Display & Lato -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet utama -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== -->
+  <!-- Elemen Audio Latar   -->
+  <!-- ==================== -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/music/Best Part (feat. H.E.R.) - Daniel Caesar.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- =============================== -->
+  <!-- Tombol Musik (posisi tetap/fixed) -->
+  <!-- =============================== -->
+  <button class="music-btn" id="music-btn" aria-label="Play/Pause musik">
+    <span class="music-icon">🎵</span>
+  </button>
+
+  <!-- ================================ -->
+  <!-- Kontainer Kelopak Bunga (petals) -->
+  <!-- ================================ -->
+  <div class="petals-container" id="petals-container" aria-hidden="true"></div>
+
+  <!-- ================================ -->
+  <!-- BAGIAN 1: HERO SECTION          -->
+  <!-- Tampilan utama saat halaman dibuka -->
+  <!-- ================================ -->
+  <section id="hero-section" class="section hero-section">
+    <div class="hero-content">
+      <p class="hero-subtitle" id="hero-subtitle"> A Special Day for A Special Person </p>
+      <h1 class="hero-title" id="hero-title">Happy 19th Birthday, Leyka 🌸</h1>
+      <p class="hero-tagline">Scroll down for your surprise...</p>
+    </div>
+    <div class="scroll-cta" id="scroll-cta">
+      <span>↓</span>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- BAGIAN 2: GALERI FOTO           -->
+  <!-- Menampilkan momen-momen bersama -->
+  <!-- ================================ -->
+  <section id="gallery-section" class="section gallery-section">
+    <div class="section-container">
+      <h2 class="section-title fade-in">WOW😲📸</h2>
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Galeri akan diisi oleh JavaScript (4 item galeri) -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- BAGIAN 3: LIGHTBOX              -->
+  <!-- Dialog penampil foto besar      -->
+  <!-- ================================ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Tutup">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Foto sebelumnya">&#10094;</button>
+    <button class="lightbox-next" id="lightbox-next" aria-label="Foto berikutnya">&#10095;</button>
+    <div class="lightbox-content">
+      <img class="lightbox-img" id="lightbox-img" src="" alt="Foto kenangan">
+      <video class="lightbox-video" id="lightbox-video" src="" controls playsinline loop style="display: none;"></video>
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- ================================ -->
+  <!-- BAGIAN 4: MAKE A WISH           -->
+  <!-- Formulir untuk menulis harapan  -->
+  <!-- ================================ -->
+  <section id="wish-section" class="section wish-section">
+    <div class="section-container">
+      <h2 class="section-title fade-in">What's Your Wish, Ley? 🕯️</h2>
+      <p class="section-subtitle fade-in">Write down your birthday wish and send it to the universe...</p>
+      <form class="wish-form" id="wish-form">
+        <textarea class="wish-textarea" id="wish-textarea" placeholder="Write here Lecii..." required minlength="1" maxlength="1000"></textarea>
+        <button type="submit" class="wish-submit" id="wish-submit" aria-label="Kirim harapan ulang tahun">
+          <span>Send My Wish 🌸</span>
+        </button>
+        <p class="wish-error" id="wish-error" role="alert"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- BAGIAN 5: WISH SUCCESS OVERLAY  -->
+  <!-- Tampilan setelah harapan dikirim -->
+  <!-- ================================ -->
+  <div class="wish-success-overlay" id="wish-success-overlay" role="dialog" aria-modal="true" aria-label="Harapan berhasil dikirim" aria-hidden="true">
+    <div class="bloom-container" id="bloom-container"></div>
+    <h2 class="wish-success-text" id="wish-success-text">I HOPE YOUR WISH COME TRUE 🌸</h2>
+    <button class="wish-success-close" id="wish-success-close" aria-label="Lanjutkan">Continue ✨</button>
+  </div>
+
+  <!-- ================================ -->
+  <!-- BAGIAN 6: BLOW THE CANDLE       -->
+  <!-- Interaksi tiup lilin ulang tahun -->
+  <!-- ================================ -->
+  <section id="candle-section" class="section candle-section">
+    <div class="section-container">
+      <h2 class="section-title fade-in">Make a Wish &amp; Blow! 🎂</h2>
+      <div class="cake-scene" id="cake-scene">
+        <div class="cake-container">
+          <!-- Lilin ulang tahun -->
+          <div class="candles-container" id="candles-container">
+            <!-- Lilin pertama (angka 1) -->
+            <div class="candle" id="candle-1">
+              <div class="flame-container">
+                <div class="flame-glow"></div>
+                <div class="flame"></div>
+                <div class="flame-inner"></div>
+              </div>
+              <div class="smoke" id="smoke-1"></div>
+              <div class="candle-body">
+                <span class="candle-number">1</span>
+              </div>
+            </div>
+            <!-- Lilin kedua (angka 9) -->
+            <div class="candle" id="candle-2">
+              <div class="flame-container">
+                <div class="flame-glow"></div>
+                <div class="flame"></div>
+                <div class="flame-inner"></div>
+              </div>
+              <div class="smoke" id="smoke-2"></div>
+              <div class="candle-body">
+                <span class="candle-number">9</span>
+              </div>
+            </div>
+          </div>
+          <!-- Kue ulang tahun -->
+          <div class="cake">
+            <div class="cake-layer cake-layer-3"></div>
+            <div class="cake-layer cake-layer-2"></div>
+            <div class="cake-layer cake-layer-1"></div>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+        <p class="candle-instruction" id="candle-instruction">Tap to blow the candles! 🌬️</p>
+      </div>
+      <!-- Tampilan reveal setelah lilin padam -->
+      <div class="lilies-reveal" id="lilies-reveal" aria-hidden="true">
+        <img src="assets/photos/erasebg-transformed.png" alt="Lily Bouquet" class="lilies-bouquet-img">
+        <h2 class="lilies-text">Lilies for Leyka</h2>
+        <p class="lilies-subtext">🌸 I know you love lilies😎 🌸</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- BAGIAN 7: LOVE LETTER           -->
+  <!-- Surat cinta dengan animasi amplop -->
+  <!-- ================================ -->
+  <section id="letter-section" class="section letter-section">
+    <div class="section-container">
+      <h2 class="section-title fade-in">A Letter for You 💌</h2>
+      <div class="envelope-container" id="envelope-container">
+        <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Buka surat cinta">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <div class="envelope-heart">💌</div>
+          </div>
+          <div class="letter" id="letter">
+            <div class="letter-floral-corner corner-tl">🌸</div>
+            <div class="letter-floral-corner corner-tr">🌸</div>
+            <div class="letter-floral-corner corner-bl">🌸</div>
+            <div class="letter-floral-corner corner-br">🌸</div>
+            <div class="letter-content" id="letter-content">
+              <!-- Isi surat akan diisi oleh JavaScript -->
+            </div>
+            <div class="letter-signature" id="letter-signature">
+              <!-- Tanda tangan akan diisi oleh JavaScript -->
+            </div>
+          </div>
+        </div>
+        <p class="envelope-instruction" id="envelope-instruction">Tap to open your letter 💌</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- BAGIAN 8: LETTER OVERLAY        -->
+  <!-- Tampilan surat dalam ukuran besar -->
+  <!-- ================================ -->
+  <div class="letter-overlay" id="letter-overlay" role="dialog" aria-modal="true" aria-label="Tampilan surat lengkap" aria-hidden="true">
+    <div class="letter-overlay-content">
+      <button class="letter-overlay-close" id="letter-overlay-close" aria-label="Tutup surat">&times;</button>
+      <div class="letter-paper">
+        <div class="letter-floral-corner corner-tl">🌸</div>
+        <div class="letter-floral-corner corner-tr">🌸</div>
+        <div class="letter-floral-corner corner-bl">🌸</div>
+        <div class="letter-floral-corner corner-br">🌸</div>
+        <div class="letter-overlay-text" id="letter-overlay-text">
+          <!-- Teks surat overlay akan diisi oleh JavaScript -->
+        </div>
+        <div class="letter-overlay-signature" id="letter-overlay-signature">
+          <!-- Tanda tangan overlay akan diisi oleh JavaScript -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================ -->
+  <!-- BAGIAN 9: FOOTER                -->
+  <!-- Catatan kaki halaman            -->
+  <!-- ================================ -->
+  <footer id="footer" class="footer">
+    <p>Made with <span class="heart-icon">💖</span> for Leci</p>
+    <p class="footer-year">2026</p>
+  </footer>
+
+  <!-- Script utama -->
+  <script src="script.js"></script>
+</body>
+</html>
